@@ -21,7 +21,7 @@ interface ListingClientProps {
   currentUser?: SafeUser | null;
 }
 
-const initialDateRange = {
+export const initialDateRange = {
   startDate: new Date(),
   endDate: new Date(),
   key: "selection",

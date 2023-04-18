@@ -1,12 +1,14 @@
 "use client";
 
 import useCountries from "@/app/hooks/useCountries";
+import useSearchModal from "@/app/hooks/useSearchModal";
 import { differenceInDays } from "date-fns";
 import { useSearchParams } from "next/navigation";
 import { useMemo } from "react";
 import { BiSearch } from "react-icons/bi";
 
 const Search = () => {
+  const searchModal = useSearchModal();
   const params = useSearchParams();
 
   const locationValue = params?.get("locationValue");
@@ -45,7 +47,10 @@ const Search = () => {
   }, [guestCount]);
 
   return (
-    <div className="border-[1px] w-full md:w-auto py-2 rounded-full shadow-sm hover:shadow-md transition cursor-pointer">
+    <div
+      onClick={searchModal.onOpen}
+      className="border-[1px] w-full md:w-auto py-2 rounded-full shadow-sm hover:shadow-md transition cursor-pointer"
+    >
       <div className="flex flex-row items-center justify-between">
         <div className="text-sm font-semibold px-6">{locationLabel}</div>
         <div className="hidden sm:block text-sm font-semibold px-6 border-x-[1px] flex-1 text-center">

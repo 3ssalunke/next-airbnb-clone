@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import useRentModal from "@/app/hooks/useRentModal";
+import { signOut } from "next-auth/react";
 
 interface UserMenuProps {
   currentUser?: SafeUser | null;
@@ -76,7 +77,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                 />
                 <MenuItem label="Airbnb your home" onClick={rentModal.onOpen} />
                 <hr />
-                <MenuItem label="logout" onClick={() => {}} />
+                <MenuItem label="logout" onClick={() => signOut()} />
               </>
             ) : (
               <>
